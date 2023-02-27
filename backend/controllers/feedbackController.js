@@ -1,14 +1,18 @@
 const Feedback = require("../models/feedbackModel");
 const mongoose = require("mongoose");
 
-// get all feedbacks
+// @desc    Get feedbacks
+// @route   GET /api/feedbacks
+// @acces   Public
 const getFeedbacks = async (req, res) => {
   const feedbacks = await Feedback.find({}).sort({ createdAt: -1 });
 
   res.status(200).json(feedbacks);
 };
 
-// get a single feedback
+// @desc    Get feedback
+// @route   GET /api/feedbacks/:id
+// @acces   Private
 const getFeedback = async (req, res) => {
   const { id } = req.params;
 
@@ -22,8 +26,9 @@ const getFeedback = async (req, res) => {
   res.status(200).json(feedback);
 };
 
-// create a feedback
-
+// @desc    Create feedback
+// @route   POST /api/feedbacks
+// @acces   Private
 const createFeedback = async (req, res) => {
   const {
     startPoint,
@@ -54,7 +59,9 @@ const createFeedback = async (req, res) => {
   }
 };
 
-// update a feedback
+// @desc    Update feedback
+// @route   PUT /api/feedbacks/:id
+// @acces   Private
 const updateFeedback = async (req, res) => {
   const { id } = req.params;
 
@@ -73,7 +80,9 @@ const updateFeedback = async (req, res) => {
   res.status(200).json(feedback);
 };
 
-// delete a feedback
+// @desc    Delete feedback
+// @route   DELETE /api/feedbacks/:id
+// @acces   Private
 const deleteFeedback = async (req, res) => {
   const { id } = req.params;
 

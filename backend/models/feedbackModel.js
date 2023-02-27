@@ -41,8 +41,7 @@ const feedbackSchema = new Schema(
       required: true,
     },
   },
-  { timestamps: true },
-  { collection: "feedbackDb" }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Feedback", feedbackSchema);
